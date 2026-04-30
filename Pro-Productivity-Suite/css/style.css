@@ -221,3 +221,82 @@ select {
     padding: 12px;
   }
 }
+/* --- MOBILE RESPONSIVENESS --- */
+
+/* This triggers for screens smaller than 768px (Tablets and Phones) */
+@media (max-width: 768px) {
+  /* 1. Change the main layout from side-by-side to vertical */
+  body {
+    flex-direction: column;
+  }
+
+  /* 2. Make the sidebar a horizontal top-bar instead of a vertical side-bar */
+  #sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px;
+    position: relative;
+  }
+
+  /* 3. Adjust the Nav links to sit side-by-side and scroll horizontally if needed */
+  .nav {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 5px;
+    white-space: nowrap;
+  }
+
+  .nav a {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  /* Hide labels or shorten them if the screen is very small */
+  .nav a span {
+    display: none; /* Only show icons on very small phones to save space */
+  }
+
+  /* 4. Adjust the Main Content area to take full width */
+  #main {
+    padding: 15px;
+    width: 100%;
+  }
+
+  /* 5. Fix the Form rows (Input fields) to stack vertically */
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-row .input,
+  .form-row .btn {
+    width: 100% !important; /* Force inputs to take full width */
+  }
+
+  /* 6. Dashboard Grid: Force 1 column on mobile */
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 7. Kanban Board: Force columns to stack vertically */
+  .kanban-board {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  /* 8. Task Items: Stack meta info (dates/priority) below the title */
+  .task {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .task .meta {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
