@@ -210,93 +210,58 @@ select {
   color: var(--muted);
   margin-top: 12px;
 }
-@media (max-width: 880px) {
-  .sidebar {
-    display: none;
-  }
-  .app-root {
-    flex-direction: column;
-  }
-  .main {
-    padding: 12px;
-  }
-}
-/* --- MOBILE RESPONSIVENESS --- */
-
-/* This triggers for screens smaller than 768px (Tablets and Phones) */
+/* Tablet and Mobile Fix */
 @media (max-width: 768px) {
-  /* 1. Change the main layout from side-by-side to vertical */
+  /* 1. Change body to stack vertically so main content moves under the header */
   body {
-    flex-direction: column;
+    flex-direction: column !important;
   }
 
-  /* 2. Make the sidebar a horizontal top-bar instead of a vertical side-bar */
+  /* 2. Turn Sidebar into a Top Menu Card */
   #sidebar {
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: auto !important;
+    padding: 15px 20px !important;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* This gives it the 'card' look */
     border-right: none;
-    border-bottom: 1px solid var(--border-color);
-    padding: 10px;
-    position: relative;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
   }
 
-  /* 3. Adjust the Nav links to sit side-by-side and scroll horizontally if needed */
+  /* 3. Align Logo and Nav horizontally */
+  .sidebar-header {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  /* 4. Navigation links in a neat row */
   .nav {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 10px;
-    padding: 5px;
-    white-space: nowrap;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 20px; /* Space between menu items */
+    flex-wrap: wrap; /* If menu is long, it goes to next line instead of breaking */
   }
 
   .nav a {
-    padding: 8px 15px;
+    padding: 8px 12px;
     font-size: 14px;
+    background: #f8f9fa; /* Light background for 'button' feel */
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
   }
 
-  /* Hide labels or shorten them if the screen is very small */
-  .nav a span {
-    display: none; /* Only show icons on very small phones to save space */
-  }
-
-  /* 4. Adjust the Main Content area to take full width */
+  /* 5. Adjust main content padding */
   #main {
-    padding: 15px;
-    width: 100%;
+    width: 100% !important;
+    padding: 20px !important;
   }
 
-  /* 5. Fix the Form rows (Input fields) to stack vertically */
-  .form-row {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .form-row .input,
-  .form-row .btn {
-    width: 100% !important; /* Force inputs to take full width */
-  }
-
-  /* 6. Dashboard Grid: Force 1 column on mobile */
-  .dashboard-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* 7. Kanban Board: Force columns to stack vertically */
+  /* 6. Dashboard Grid: 1 column so cards don't look squashed */
+  .dashboard-grid,
   .kanban-board {
     grid-template-columns: 1fr !important;
-    gap: 20px;
-  }
-
-  /* 8. Task Items: Stack meta info (dates/priority) below the title */
-  .task {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .task .meta {
-    width: 100%;
-    justify-content: flex-start;
   }
 }
